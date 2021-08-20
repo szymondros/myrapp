@@ -2,6 +2,86 @@
 @import "src/scss/settings/fonts";
 
 .about {
-  height: 300px;
+  height: 100%;
   background: $light_navy_accent_color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  font-family: $base-font-family;
+  color: $dark-accent_color;
+
+  h1 {
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .freestyle-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0 0 0;
+    position: relative;
+  }
+
+  .favourite-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0 0 0;
+    position: relative;
+
+    img {
+      order: -1;
+    }
+  }
+
+  .createrap-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0 0 0;
+    position: relative;
+  }
+
+  div img {
+    height: 150px;
+    width: 150px;
+  }
+
+  .about-text-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0 0 0;
+
+    h2 {
+      font-weight: 600;
+      padding-bottom: 10px;
+    }
+
+    span {
+      text-align: center;
+    }
+  }
+
+  .dot {
+    height: 280px;
+    width: 400px;
+    background-color: $light_text_color;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+    opacity: 0.25;
+  }
+
+}
+
+#about {
+  padding-top: 60px;
 }

@@ -14,12 +14,12 @@ const HelloSection = () => {
         }
     })
     return (
-        <section id={"hello-section"}>
+        <section id="hello-section">
             <div className={"wrapper hello-section"}>
                 <h1>Dzięki tej aplikacji staniesz się</h1>
                 <h1>{active ? "raperem" : "freestylowcem"}</h1>
                 <div className={"icons-wrapper"}>
-                    <img src={"./images/freestyler.png"} className={active ? "icon-opacity" : ""}/>
+                    <img src="./images/freestyler.png" className={active ? "icon-opacity" : ""}/>
                     <img src={"./images/rapper.png"} className={!active ? "icon-opacity" : ""}/>
                 </div>
                 <Button text={"Rozpocznij"}/>
