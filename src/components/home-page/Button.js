@@ -1,19 +1,15 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const Button = ({text}) => {
 
-    const clickHandler = (e) => {
-        e.preventDefault();
-    }
-
     return (
-        <>
-            <a
-                href="/signin"
+        <div className="box-for-transition">
+            <Link
+                to="/signin"
                 className={"btn"}
-                // onClick={(e) => clickHandler(e)}
-            >{text}</a>
-        </>
+            >{text}</Link>
+        </div>
     );
 };
 

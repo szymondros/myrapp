@@ -48,12 +48,6 @@
     padding-bottom: 5px;
   }
 
-  .error-message {
-    color: red;
-    font-size: 12px;
-    padding-top: 2px;
-  }
-
   button {
     background: $light_text_color;
     border: none;
@@ -88,4 +82,10 @@
     padding-bottom: 25px;
   }
 
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  padding-top: 2px;
 }

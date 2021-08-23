@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Logo from "./Logo";
 import Button from "./Button";
-import {Link} from "react-router-dom";
+import {HashLink as Link} from "react-router-hash-link";
 
 const NavigationBox = () => {
     const [active, setActive] = useState(false);
@@ -25,19 +25,19 @@ const NavigationBox = () => {
                 </div>
                 <ul className={`nav-links ${active ? "open" : ""}`}>
                     <li className={`${active ? "fade" : ""}`}>
-                        <a href={"#"}
+                        <Link to={"/#"}
                            onClick={clickHandler}
-                        >początek</a>
+                        >początek</Link>
                     </li>
                     <li className={`${active ? "fade" : ""}`}>
-                        <a href="#about"
+                        <Link to="#about"
                            onClick={clickHandler}
-                        >aplikacja</a>
+                        >aplikacja</Link>
                     </li>
                     <li className={`${active ? "fade" : ""}`}>
-                        <a href={"/#form"}
+                        <Link to="/#form"
                            onClick={clickHandler}
-                        >kontakt</a>
+                        >kontakt</Link>
                     </li>
                     <Button text={"Rozpocznij"}/>
                 </ul>
