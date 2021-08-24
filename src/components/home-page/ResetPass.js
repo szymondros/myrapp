@@ -30,7 +30,7 @@ const ResetPass = () => {
                 <Logo/>
             </nav>
             <div className="sign-section wrapper">
-                <BackArrow location={"/signin"} />
+                <BackArrow location={"/signin"}/>
                 <div className="sign-text">
                     <h1>Zresetuj hasło</h1>
                     <span>Podaj adres e-mail aby zresetować hasło</span>
@@ -41,7 +41,9 @@ const ResetPass = () => {
                         <input {...register("email")} />
                         <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
                     </div>
-                    <button type="submit" className="login-btn">Resetuj hasło</button>
+                    <div className="sign-btn-box">
+                        <button type="submit" className="login-btn">Resetuj hasło</button>
+                    </div>
                 </form>
             </div>
         </>

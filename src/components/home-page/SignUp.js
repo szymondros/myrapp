@@ -91,14 +91,14 @@ const SignUp = () => {
                         <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"password"}/>
                         {/*Error na dane logowania*/}
                     </div>
-                    <div className="login-password">
+                    <div className="sign-password">
                         <label htmlFor="password">Powtórz hasło</label>
                         <div className="password-eye-wrapper">
                             <input type={passwordVisible ? 'text' : 'password'} {...register("repeat")} />
                         </div>
                         <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"repeat"}/>
                     </div>
-                    <div className="sign-btn-section">
+                    <div className="sign-btn-box">
                         <button className="register-btn" type="submit">Zarejestruj się</button>
                     </div>
                 </form>

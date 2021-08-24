@@ -50,7 +50,7 @@ const SignIn = () => {
                         <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"password"}/>
                         {/*Error na dane logowania*/}
                     </div>
-                    <div className="sign-btn-section">
+                    <div className="sign-btn-box">
                         <button type="submit" className="login-btn">Zaloguj</button>
                         <Link to="/signup">
                             <button className="register-btn">Zarejestruj się</button>

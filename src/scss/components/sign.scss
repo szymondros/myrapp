@@ -23,20 +23,27 @@
   }
 
   form {
+
+    > div {
+      padding-bottom: 20px;
+    }
+
+    div:nth-last-of-type(2) {
+      padding-bottom: 0px;
+    }
+
     .sign-email {
       display: flex;
       flex-direction: column;
-      padding-bottom: 20px;
     }
 
     .sign-password {
       display: flex;
       flex-direction: column;
-      padding-bottom: 20px;
     }
 
-    .sign-btn-section {
-
+    .sign-btn-box {
+      padding-top: 20px;
     }
 
   }
@@ -74,7 +81,6 @@
 
   input {
     width: 100%;
-    margin-bottom: 20px;
   }
 
   svg {
