@@ -1,0 +1,11 @@
+@import "src/scss/settings/colors";
+
+.back-arrow {
+  padding-top: 15px;
+  font-size: 20px;
+  cursor: pointer;
+   a {
+     text-decoration: none;
+     color: $dark_accent_color;
+   }
+}
