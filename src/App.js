@@ -18,7 +18,7 @@ function App() {
                         <Route exact path="/signin" component={SignIn}/>
                         <Route exact path="/signup" component={SignUp}/>
                         <Route exact path="/reset-pass" component={ResetPass}/>
-                        <PrivateRoute exact path="/app" component={MyApp}/>
+                        <PrivateRoute exact path="/myapp" component={MyApp}/>
                     </Switch>
                 </BrowserRouter>
             </AuthProvider>

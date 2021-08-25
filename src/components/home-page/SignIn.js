@@ -20,19 +20,20 @@ const SignIn = ( { history }) => {
             .required("To pole jest wymagane")
     });
 
-    const {handleSubmit, register, formState: {errors}} = useForm({
+    const {handleSubmit, register, formState: {errors}, setValue, getValues} = useForm({
         mode: "onBlur",
         resolver: yupResolver(validationSchema)
     });
 
     const handleLogin = useCallback(
         async event => {
-            event.preventDefault();
-            const {email, password} = event.target.elements;
+            // event.preventDefault();
+            const email = getValues("email");
+            const password = getValues("password");
             try {
                 await app
                     .auth()
-                    .signInWithEmailAndPassword(email.value, password.value);
+                    .signInWithEmailAndPassword(email, password);
                 history.push("/myapp");
             } catch (error) {
                 alert(error);
@@ -61,12 +62,12 @@ const SignIn = ( { history }) => {
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="sign-email">
                         <label htmlFor="email">Adres e-mail</label>
-                        <input {...register("email")} />
+                        <input {...register("email")} onChange={e => setValue("email", e.target.value)} />
                         <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
                     </div>
                     <div className="sign-password">
                         <label htmlFor="password">Hasło</label>
-                        <input type="password" {...register("password")} />
+                        <input type="password" {...register("password")} onChange={e => setValue("password", e.target.value)}/>
                         <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"password"}/>
                         {/*Error na dane logowania*/}
                     </div>

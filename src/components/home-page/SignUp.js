@@ -13,7 +13,7 @@ import app from "../../base";
 import {withRouter} from "react-router-dom";
 
 
-const SignUp = ({history}) => {
+const SignUp = ({ history }) => {
 
     const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -38,17 +38,13 @@ const SignUp = ({history}) => {
         resolver: yupResolver(validationSchema)
     });
 
-    const handleSignUp = useCallback(async (event, data) => {
-        // event.preventDefault();
-        // const { email, password } = event.target?.elements;
-        // const email = event.target.email;
-        // const password = event.target.name;
-        console.log(getValues(data.email));
-
+    const handleSignUp = useCallback(async () => {
+        const email = getValues("email");
+        const password = getValues("password");
         try {
             await app
                 .auth()
-                .createUserWithEmailAndPassword(data.email, data.password);
+                .createUserWithEmailAndPassword(email, password);
             history.push("/myapp");
         } catch (error) {
             alert(error);
@@ -99,8 +95,9 @@ const SignUp = ({history}) => {
                             <ReactTooltip multiline={true} className="target-msg"/>
                         </div>
                         <div className="password-eye-wrapper">
-                            <input onChange={e => setValue("password", e.target.value)} name="password"
-                                   type={passwordVisible ? 'text' : 'password'} {...register("password")} />
+                            <input name="password"
+                                   type={passwordVisible ? 'text' : 'password'} {...register("password")}
+                                   onChange={e => setValue("password", e.target.value)}/>
                             <FontAwesomeIcon onClick={clickHandler} icon={passwordVisible ? 'eye' : 'eye-slash'}/>
                         </div>
                         <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"password"}/>
