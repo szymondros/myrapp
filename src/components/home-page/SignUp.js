@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useMemo, useCallback, useEffect} from 'react';
 import Logo from "./Logo";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
@@ -9,9 +9,11 @@ import fontawesome from '@fortawesome/fontawesome'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faEyeSlash, faQuestionCircle} from "@fortawesome/free-solid-svg-icons";
 import BackArrow from "./BackArrow";
+import app from "../../base";
+import {withRouter} from "react-router-dom";
 
 
-const SignUp = () => {
+const SignUp = ({history}) => {
 
     const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -31,15 +33,27 @@ const SignUp = () => {
 
     });
 
-    const {handleSubmit, register, formState: {errors}} = useForm({
+    const {handleSubmit, register, formState: {errors}, setValue, getValues} = useForm({
         mode: "onBlur",
         resolver: yupResolver(validationSchema)
     });
 
-    const onSubmit = (data, e) => {
-        console.log(data);
-        e.target.reset();
-    }
+    const handleSignUp = useCallback(async (event, data) => {
+        // event.preventDefault();
+        // const { email, password } = event.target?.elements;
+        // const email = event.target.email;
+        // const password = event.target.name;
+        console.log(getValues(data.email));
+
+        try {
+            await app
+                .auth()
+                .createUserWithEmailAndPassword(data.email, data.password);
+            history.push("/myapp");
+        } catch (error) {
+            alert(error);
+        }
+    }, [history]);
 
     useMemo(() => {
         fontawesome.library.add(faQuestionCircle, faEye, faEyeSlash);
@@ -56,15 +70,15 @@ const SignUp = () => {
                 <Logo/>
             </nav>
             <div className="sign-section wrapper">
-                <BackArrow location={"/signin"} />
+                <BackArrow location={"/signin"}/>
                 <div className="sign-text">
                     <h1>Zarejestruj się</h1>
                     <span>Uzyskaj dostęp do niesamowitych funkcjonalaności</span>
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(handleSignUp)}>
                     <div className="sign-email">
                         <label htmlFor="email">Adres e-mail</label>
-                        <input {...register("email")} />
+                        <input name="email" {...register("email")} onChange={e => setValue("email", e.target.value)} />
                         <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
                     </div>
                     <div className="sign-password">
@@ -85,7 +99,8 @@ const SignUp = () => {
                             <ReactTooltip multiline={true} className="target-msg"/>
                         </div>
                         <div className="password-eye-wrapper">
-                            <input type={passwordVisible ? 'text' : 'password'} {...register("password")} />
+                            <input onChange={e => setValue("password", e.target.value)} name="password"
+                                   type={passwordVisible ? 'text' : 'password'} {...register("password")} />
                             <FontAwesomeIcon onClick={clickHandler} icon={passwordVisible ? 'eye' : 'eye-slash'}/>
                         </div>
                         <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"password"}/>
@@ -107,4 +122,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default withRouter(SignUp);
