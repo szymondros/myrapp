@@ -8,3 +8,14 @@
 @import "components/forms";
 @import "components/sign";
 @import "components/backarrow";
+@import "components/myapp";
+@import "components/loading";
+
+
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+}

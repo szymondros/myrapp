@@ -27,7 +27,6 @@ const SignIn = ( { history }) => {
 
     const handleLogin = useCallback(
         async event => {
-            // event.preventDefault();
             const email = getValues("email");
             const password = getValues("password");
             try {

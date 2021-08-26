@@ -6,6 +6,7 @@ import ResetPass from "./components/home-page/ResetPass";
 import MyApp from "./components/App/MyApp";
 import {AuthProvider} from "./Auth";
 import PrivateRoute from "./PrivateRoute";
+import { AnimatedSwitch, AnimatedRoute } from 'react-router-transition';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/" component={Home}/>
-                        <Route exact path="/signin" component={SignIn}/>
+                        <Route exact path="/signin" component={SignIn} />
                         <Route exact path="/signup" component={SignUp}/>
                         <Route exact path="/reset-pass" component={ResetPass}/>
                         <PrivateRoute exact path="/myapp" component={MyApp}/>
