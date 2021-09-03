@@ -1,21 +1,17 @@
 @import "settings/reset.css";
 @import "settings/colors";
 @import "settings/wrapper";
-@import "components/navigation-box";
-@import "components/hello-section";
-@import "components/buttons";
-@import "components/about";
-@import "components/forms";
-@import "components/sign";
-@import "components/backarrow";
-@import "components/myapp";
-@import "components/loading";
-
-
-.switch-wrapper {
-  position: relative;
-}
-
-.switch-wrapper > div {
-  position: absolute;
-}
+@import "components/home-page/navigation-box";
+@import "components/home-page/hello-section";
+@import "components/elements/buttons";
+@import "components/home-page/about";
+@import "components/home-page/forms";
+@import "components/home-page/sign";
+@import "components/elements/backarrow";
+@import "components/App/myapp";
+@import "components/elements/loading";
+@import "components/App/audioplayer";
+@import "components/elements/equalizer";
+@import "components/elements/low-equalizer";
+@import "components/App/writetext";
+@import "components/App/tracklist";

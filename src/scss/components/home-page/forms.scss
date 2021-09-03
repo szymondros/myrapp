@@ -1,0 +1,91 @@
+@import "../../settings/colors";
+@import "../../settings/fonts";
+
+.form-section {
+  padding-bottom: 40px;
+  padding-top: 40px;
+  font-family: $base-font-family;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .formsection-text {
+    padding-bottom: 40px;
+  }
+
+  h1 {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  input {
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid $dark_navy_accent_color;
+    border-radius: 5px;
+  }
+
+  input:focus {
+    background: $light_text_color;
+    outline-color: $dark_navy_accent_color;
+  }
+
+  textarea {
+    border: none;
+    border-bottom: 1px solid $dark_navy_accent_color;
+    border-radius: 5px;
+    height: 80px;
+  }
+
+  textarea:focus {
+    background: $light_text_color;
+    outline-color: $dark_navy_accent_color;
+  }
+
+  label {
+    padding-bottom: 5px;
+  }
+
+  button {
+    background: $light_text_color;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 32px;
+    font-weight: 600;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .form-name {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+
+  .form-email {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+
+  .form-subject {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+
+  .form-textarea {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+  }
+
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  padding-top: 2px;
+}

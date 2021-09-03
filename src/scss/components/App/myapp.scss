@@ -1,0 +1,166 @@
+@import "../../settings/colors";
+@import "../../settings/fonts";
+
+* {
+  font-family: $base-font-family;
+}
+
+h1 {
+  font-family: $base-font-family;
+}
+
+
+
+
+
+.myapp-nav {
+  position: static;
+
+  width: 100%;
+
+  .myapp-wrapper {
+    padding: 0 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo-wrapper {
+      padding-left: 0px;
+    }
+
+    .logout-btn {
+      padding: 8px;
+      margin-bottom: 0px;
+      width: auto;
+      font-family: $base-font-family;
+      background: $navy_accent_color;
+      font-size: 12px;
+    }
+  }
+}
+
+.app-freestyle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+
+  .freestyle-box {
+    padding-top: 20px;
+    width: 100%;
+
+    .app-btn {
+      padding: 12px 24px;
+      background: white;
+      border: 2px solid $dark_navy_accent_color;
+      width: 100%;
+      font-size: 18px;
+      font-weight: 600;
+      color: $dark_navy_accent_color;
+      box-shadow: 0 7px $dark_navy_accent_color;
+      border-radius: 15px;
+    }
+
+    .app-btn:active {
+      box-shadow: 0 4px $dark_navy_accent_color;
+      transform: translateY(3px);
+    }
+
+    .app-btn:disabled {
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+
+    .app-btn:nth-child(1) {
+      margin-bottom: 15px;
+    }
+
+    .app-btn:nth-child(2) {
+      margin-bottom: 15px;
+    }
+
+    .subject-box {
+      padding-top: 40px;
+      padding-bottom: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      h1 {
+        font-size: 16px;
+      }
+      h1:nth-child(2) {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 30px;
+      }
+    }
+
+    .equalizer-box {
+      width: 100%;
+    }
+  }
+}
+
+.navigation {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: $light_text_color;
+
+  .mobile-menu-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    font-size: 30px;
+
+
+    p {
+      display: none;
+    }
+
+    .mobile-menu-box:active {
+      transform: translateY(3px) scale(1.1);
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $dark_accent_color;
+  }
+
+  a:hover {
+    transform: translateY(3px) scale(1.1);
+  }
+
+  a:focus {
+    transform: translateY(3px) scale(1.1);
+  }
+
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+.pause-button {
+  padding-top: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 30px;
+  font-size: 45px;
+}

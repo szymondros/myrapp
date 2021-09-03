@@ -1,0 +1,165 @@
+@import "../../settings/colors";
+@import "../../settings/fonts";
+
+.app-write-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+  font-family: $base_font-family;
+
+  .app-btn {
+    padding: 12px 24px;
+    background: white;
+    border: 2px solid $dark_navy_accent_color;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    color: $dark_navy_accent_color;
+    box-shadow: 0 7px $dark_navy_accent_color;
+    border-radius: 15px;
+    margin-top: 5px;
+  }
+
+  .app-btn:active {
+    box-shadow: 0 4px $dark_navy_accent_color;
+    transform: translateY(3px);
+  }
+
+  .app-btn:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+  }
+
+  p {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .write-box {
+    width: 100%;
+
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 30px;
+
+      .form-add-beat {
+        width: 100%;
+
+        .pause-button {
+          height: 60px;
+          padding-top: 0px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row;
+          font-size: 35px;
+
+          a {
+            padding: 0px 10px;
+          }
+
+          div {
+            justify-content: center;
+
+            div {
+              height: 15px;
+              width: 12px;
+            }
+          }
+        }
+
+        .soundcloud-label-input {
+          display: flex;
+          height: 60px;
+
+          svg {
+            font-size: 50px;
+            padding-right: 20px;
+          }
+        }
+
+        label {
+        }
+
+        input {
+          height: 25px;
+          border: none;
+          border-bottom: 1px solid $dark_navy_accent_color;
+          border-radius: 5px;
+          width: 100%;
+          margin-top: 2px;
+        }
+
+        .green-background {
+          border: 3px solid darkgreen;
+          box-sizing: border-box;
+        }
+
+        input:focus {
+          background: $light_text_color;
+          outline-color: $dark_navy_accent_color;
+        }
+      }
+    }
+
+    .form-textarea {
+      width: 100%;
+      padding-top: 30px;
+
+      .textarea-title {
+        display: flex;
+        align-items: center;
+        padding-bottom: 20px;
+
+        svg {
+          font-size: 50px;
+          padding-right: 20px;
+        }
+
+        .textarea-label-input {
+
+          input {
+            height: 25px;
+            border: none;
+            border-bottom: 1px solid $dark_navy_accent_color;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 2px;
+          }
+
+          input:focus {
+            background: $light_text_color;
+            outline-color: $dark_navy_accent_color;
+          }
+        }
+
+      }
+
+      textarea {
+        border: none;
+        border-bottom: 1px solid $dark_navy_accent_color;
+        border-radius: 5px;
+        height: 270px;
+        width: 100%;
+        color: $dark_navy_accent_color;
+        background: $textarea_color;
+        resize: none;
+
+
+      }
+
+      textarea:focus {
+        background: $light_text_color;
+        outline-color: $dark_navy_accent_color;
+      }
+
+    }
+  }
+}
+

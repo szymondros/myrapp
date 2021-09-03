@@ -1,0 +1,44 @@
+@import "../../settings/colors";
+@import "../../settings/fonts";
+
+.btn {
+  padding: 14px 32px;
+  background: $dark_navy_accent_color;
+  color: $light_text_color;
+  font-family: $base-font-family;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid $dark_navy_accent_color;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.nav-links .btn {
+  transition: all 0.5s ease-in-out 0.8s;
+}
+
+.login-btn {
+  padding: 14px 32px;
+  background: $dark_navy_accent_color;
+  color: $light_text_color;
+  font-family: $base-font-family;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid $dark_navy_accent_color;
+  border-radius: 10px;
+  text-decoration: none;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.register-btn {
+  background: $light_text_color;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 32px;
+  font-weight: 600;
+  font-size: 14px;
+  width: 100%;
+}

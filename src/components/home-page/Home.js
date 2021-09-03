@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationBox from "./NavigationBox";
+import NavigationBox from "./elements/NavigationBox";
 import Landing from "./Landing";
 
 const Home = () => {
