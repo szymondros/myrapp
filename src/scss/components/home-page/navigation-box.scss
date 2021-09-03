@@ -127,7 +127,7 @@ nav {
 
 @media screen and (min-width: 768px) {
   nav {
-    position: static;
+    position: fixed;
     display: flex;
 
     .logo-wrapper {
@@ -136,9 +136,6 @@ nav {
       align-items: center;
       padding-left: 40px;
 
-      h1 {
-        font-size: 40px;
-      }
     }
 
     .hamburger {
@@ -179,7 +176,7 @@ nav {
       }
 
       li:hover {
-        border-bottom: 1px solid red;
+
       }
 
       .btn {
