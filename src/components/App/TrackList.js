@@ -9,11 +9,11 @@ import {faPlay} from "@fortawesome/free-solid-svg-icons";
 import fontawesome from "@fortawesome/fontawesome";
 import * as url from "url";
 import Notification from "./elements/Notification";
+import {toast} from "react-toastify";
 
 const TrackList = () => {
 
     const [textList, setTextList] = useState([]);
-    const [itemContent, setItemContent] = useState("");
     const [selectedText, setSelectedText] = useState(false);
 
 
@@ -22,13 +22,25 @@ const TrackList = () => {
     const content = db.collection(user.uid);
     const email = user.email;
 
-
+    const successNotification = (text) => {
+        toast.success(text, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
 
     const deleteText = () => {
         const textTitle = selectedText?.title;
         setTextList((prev) => prev.filter(p => p.title !== textTitle));
         setSelectedText(false);
         db.collection(user.uid).doc(textTitle).delete();
+        successNotification("Tekst usunięty pomyślnie");
+
     }
 
     const getTextList = async () => {

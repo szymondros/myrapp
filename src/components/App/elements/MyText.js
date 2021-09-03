@@ -47,8 +47,8 @@ const MyText = ({selectedText, setSelectedText, onDelete, onUpdate}) => {
         });
     }
 
-    const errorNotification = () => {
-        toast.error('Błąd zapisu', {
+    const errorNotification = (text) => {
+        toast.error(text, {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
