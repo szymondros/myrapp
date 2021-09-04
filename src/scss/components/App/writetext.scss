@@ -146,6 +146,8 @@
         color: $dark_navy_accent_color;
         background: $textarea_color;
         resize: none;
+        text-align: center;
+        font-size: 16px;
 
 
       }
@@ -159,3 +161,49 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .app-write-section {
+
+    .write-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      form {
+
+        .form-add-beat {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          .soundcloud-label-input {
+            width: 50%;
+
+            .num-form {
+              width: 100%;
+            }
+          }
+
+          .app-btn {
+            width: 50%;
+            cursor: pointer;
+          }
+        }
+      }
+      .form-textarea {
+        width: 50%;
+
+        textarea {
+          height: 300px;
+          text-align: center;
+        }
+
+        .app-btn {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

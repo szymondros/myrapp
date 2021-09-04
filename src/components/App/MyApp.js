@@ -65,6 +65,9 @@ const MyApp = () => {
             <Notification/>
             <SecondNavigation />
             <div className="content-box">
+                <video playsInline autoPlay muted loop poster="" id="bgvid">
+                    <source src="./video/app-bgvid.mp4" type="video/mp4"/>
+                </video>
                 <section className="app-freestyle-section wrapper">
                     <HelloUser />
                     <div className="freestyle-box">

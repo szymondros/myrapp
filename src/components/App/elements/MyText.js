@@ -81,13 +81,16 @@ const MyText = ({selectedText, setSelectedText, onDelete, onUpdate}) => {
 
 
     return (
-        <div className="text-content-box wrapper">
+        <div className="text-content-box">
             <AudioPlayer
                 url={selectedText?.url}
                 loop={true}
                 playing={!isPlayPause}
                 controls={false}
             />
+            <video playsInline autoPlay muted loop poster="" id="bgvid">
+                <source src="./video/text-bgvid.mp4" type="video/mp4"/>
+            </video>
             <div className="buttons-box">
                 <div>
                     <BackArrow onClick={activeHandler}/>

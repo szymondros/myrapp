@@ -98,12 +98,20 @@
     align-items: center;
 
     .form-section {
-      background: white;
+      background: $ul_lighter_accent;
       align-items: center;
       width: 400px;
       height: 500px;
       border-radius: 15px;
       box-shadow: 0 0 8px white;
+
+      input {
+        background: $ul_lighter_accent;
+      }
+
+      textarea {
+        background: $ul_lighter_accent;
+      }
 
       form {
         width: 400px;

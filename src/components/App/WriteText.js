@@ -103,6 +103,9 @@ const WriteText = () => {
                     playing={!isPlayPause}
                     controls={false}
                 />
+                <video playsInline autoPlay muted loop poster="" id="bgvid">
+                    <source src="./video/write-bgvid.mp4" type="video/mp4"/>
+                </video>
                 <section className="app-write-section wrapper">
                     <HelloUser/>
                     <div className="write-box">
