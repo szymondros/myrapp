@@ -41,6 +41,10 @@ h1 {
 .content-box {
   padding-bottom: 100px;
 
+  video {
+    display: none;
+  }
+
   .app-freestyle-section {
     display: flex;
     justify-content: center;
@@ -128,6 +132,7 @@ h1 {
       color: $dark_navy_accent_color;
       box-shadow: 0 7px $dark_navy_accent_color;
       border-radius: 15px;
+      cursor: pointer;
     }
 
     .app-btn:active {
@@ -195,9 +200,6 @@ h1 {
       display: none;
     }
 
-    .mobile-menu-box:active {
-      transform: translateY(3px) scale(1.1);
-    }
   }
 
   a {
@@ -206,11 +208,11 @@ h1 {
   }
 
   a:hover {
-    transform: translateY(3px) scale(1.1);
+    color: $navy_accent_color;
   }
 
-  a:focus {
-    transform: translateY(3px) scale(1.1);
+  a:active {
+    color: $navy_accent_color;
   }
 
 }
@@ -227,8 +229,8 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 30px;
   font-size: 45px;
+  cursor: pointer;
 }
 
 
@@ -239,25 +241,60 @@ h1 {
     flex-direction: column;
     justify-content: flex-start;
     width: 250px;
+    box-shadow: 1px 4px 10px white;
+
     .mobile-menu-box {
       justify-content: space-between;
       display: flex;
       font-size: 20px;
-      border-bottom: 1px solid $ul_light_accent;
       p {
         font-family: $base_font-family;
         display: block;
         order: -1;
-        padding-left: 20px;
+        padding-left: 40px;
+        font-size: 18px;
       }
       svg {
         padding-right: 20px;
       }
     }
+
+    .mobile-menu-box:hover {
+      svg {
+        transform: rotate(360deg);
+        transition: 400ms ease-in;
+      }
+    }
   }
 
   .content-box {
-    width: 100%;
+    width: calc(100vw - 250px);
     margin-left: 250px;
+
+    video {
+      display: block;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      z-index: -20;
+      opacity: 0.2;
+      top: 0;
+      left: 0;
+    }
+
+    .app-freestyle-section {
+
+      .freestyle-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .app-btn {
+          width: 50%;
+        }
+      }
+    }
   }
 }

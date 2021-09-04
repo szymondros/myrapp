@@ -7,7 +7,7 @@ const Notification = () => {
         <>
             <ToastContainer
                 transition={Slide}
-                position="top-center"
+                position="top-right"
                 autoClose={1500}
                 hideProgressBar
                 newestOnTop
