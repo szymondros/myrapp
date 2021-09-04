@@ -45,21 +45,23 @@ const ResetPass = () => {
                 <Logo/>
             </nav>
             <div className="sign-section wrapper">
-                <BackArrow location={"/signin"}/>
-                <div className="sign-text">
-                    <h1>Zresetuj hasło</h1>
-                    <span>Podaj adres e-mail aby zresetować hasło</span>
+                <div className="small-form-box">
+                    <BackArrow location={"/signin"}/>
+                    <div className="sign-text">
+                        <h1>Zresetuj hasło</h1>
+                        <span>Podaj adres e-mail aby zresetować hasło</span>
+                    </div>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="sign-email">
+                            <label htmlFor="email">Adres e-mail</label>
+                            <input {...register("email")} />
+                            <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
+                        </div>
+                        <div className="sign-btn-box">
+                            <button type="submit" className="login-btn">Resetuj hasło</button>
+                        </div>
+                    </form>
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="sign-email">
-                        <label htmlFor="email">Adres e-mail</label>
-                        <input {...register("email")} />
-                        <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
-                    </div>
-                    <div className="sign-btn-box">
-                        <button type="submit" className="login-btn">Resetuj hasło</button>
-                    </div>
-                </form>
             </div>
         </>
     );

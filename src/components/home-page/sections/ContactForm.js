@@ -33,36 +33,45 @@ const ContactForm = () => {
     }
 
     return (
-        <div className="wrapper form-section" id="form">
-            <div className="formsection-text">
-                <h1>Formularz kontaktowy</h1>
-                <span>Zazwyczaj odpowiadamy w ciągu 24h</span>
+        <section id="form">
+            <div className="wrapper form-section">
+                <div className="form-section-text">
+                    <h1>Formularz kontaktowy</h1>
+                    <span>Zazwyczaj odpowiadamy w ciągu 24h</span>
+                </div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-name">
+                        <label htmlFor="firstName">Imię</label>
+                        <input {...register('firstName')} />
+                        <div className="error-msg-wrapper">
+                            <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"firstName"}/>
+                        </div>
+                    </div>
+                    <div className="form-email">
+                        <label htmlFor="email">E-mail</label>
+                        <input {...register("email")} />
+                        <div className="error-msg-wrapper">
+                            <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
+                        </div>
+                    </div>
+                    <div className="form-subject">
+                        <label htmlFor="subject">Temat</label>
+                        <input {...register("subject")} />
+                        <div className="error-msg-wrapper">
+                            <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"subject"}/>
+                        </div>
+                    </div>
+                    <div className="form-textarea">
+                        <label htmlFor="textarea">Wiadomość</label>
+                        <textarea {...register("textarea")} />
+                        <div className="error-msg-wrapper">
+                            <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name="textarea"/>
+                        </div>
+                    </div>
+                    <button type="submit">Wyślij</button>
+                </form>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-name">
-                    <label htmlFor="firstName">Imię</label>
-                    <input {...register('firstName')} />
-                    <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"firstName"}/>
-                </div>
-                <div className="form-email">
-                    <label htmlFor="email">E-mail</label>
-                    <input {...register("email")} />
-                    <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
-                </div>
-                <div className="form-subject">
-                    <label htmlFor="subject">Temat</label>
-                    <input {...register("subject")} />
-                    <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"subject"}/>
-                </div>
-                <div className="form-textarea">
-                    <label htmlFor="textarea">Wiadomość</label>
-                    <textarea {...register("textarea")} />
-                    <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name="textarea"/>
-                </div>
-                <button type="submit">Wyślij</button>
-            </form>
-
-        </div>
+        </section>
     );
 };
 

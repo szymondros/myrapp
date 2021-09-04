@@ -61,42 +61,56 @@ nav {
     pointer-events: none;
     z-index: 1;
 
-    li {
-      opacity: 0;
-      padding: 30px 0;
+    a {
+      font-size: 25px;
+      font-family: $base-font-family;
+      color: $light_text_color;
+      text-decoration: none;
+      text-transform: uppercase;
       width: 100%;
-      text-align: center;
-      cursor: pointer;
 
-      a {
-        font-size: 25px;
-        font-family: $base-font-family;
-        color: $light_text_color;
-        text-decoration: none;
-        text-transform: uppercase;
+      li {
+        opacity: 0;
+        padding: 30px 0;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      li.fade {
+        opacity: 1;
       }
     }
 
-    li.fade {
-      opacity: 1;
+    a:nth-child(1) {
+      li {
+        transition: all 0.5s ease 0.2s;
+        width: 100%;
+      }
     }
 
-    li:nth-child(1) {
-      transition: all 0.5s ease 0.2s;
+    a:nth-child(2) {
+      li {
+        transition: all 0.5s ease 0.4s;
+        width: 100%;
+      }
     }
 
-    li:nth-child(2) {
-      transition: all 0.5s ease 0.4s;
-    }
-
-    li:nth-child(3) {
-      transition: all 0.5s ease 0.6s;
-      padding-bottom: 60px;
+    a:nth-child(3) {
+      margin-bottom: 60px;
+      li {
+        transition: all 0.5s ease 0.6s;
+        width: 100%;
+      }
     }
   }
 
   .box-for-transition {
-    transition: all 0.5s ease 0.8s;
+    a {
+      font-size: 14px;
+      margin-top: 40px;
+      transition: all 0.5s ease 0.8s;
+    }
   }
 
   .nav-links.open {
@@ -134,7 +148,7 @@ nav {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-left: 40px;
+      padding-left: 80px;
 
     }
 
@@ -151,32 +165,22 @@ nav {
       clip-path: none;
       -webkit-clip-path: none;
       transition: none;
+      padding-right: 50px;
 
+      a {
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: none;
 
-      li {
-        opacity: 1;
-        pointer-events: auto;
-
-        a {
-          font-size: 16px;
+        li {
+          opacity: 1;
+          pointer-events: auto;
         }
       }
 
-      li:nth-child(1) {
-        transition: none;
-      }
-
-      li:nth-child(2) {
-        transition: none;
-      }
-
-      li:nth-child(3) {
-        transition: none;
-        padding-bottom: 30px;
-      }
-
-      li:hover {
-
+      a:nth-child(3) {
+        margin-bottom: 0;
       }
 
       .btn {
@@ -188,4 +192,18 @@ nav {
 
 .nav-active {
   overflow: visible;
+}
+
+@media screen and (min-width: 1000px) {
+  nav {
+    .logo-wrapper {
+      padding-left: 100px;
+    }
+
+    .nav-links {
+      padding-right: 60px;
+    }
+  }
+
+
 }

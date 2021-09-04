@@ -10,9 +10,9 @@ import app from "../../../base";
 import {AuthContext} from "../../../Auth";
 import {withRouter, Redirect} from "react-router-dom";
 import Notification from "../../App/elements/Notification";
-import {toast} from "react-toastify";
+import successNotification from "../../../functions/successNotification";
 
-const SignIn = ( { history }) => {
+const SignIn = ({history}) => {
 
     const validationSchema = yup.object().shape({
         email: yup.string()
@@ -36,7 +36,7 @@ const SignIn = ( { history }) => {
                     .auth()
                     .signInWithEmailAndPassword(email, password);
                 history.push("/myapp");
-                successNotification();
+                successNotification("Zalogowano pomyślnie");
 
             } catch (error) {
                 alert(error);
@@ -45,23 +45,10 @@ const SignIn = ( { history }) => {
         [history]
     );
 
-    const { currentUser } = useContext(AuthContext);
+    const {currentUser} = useContext(AuthContext);
 
     if (currentUser) {
-        return <Redirect to="/myapp" />;
-    }
-
-    const successNotification = () => {
-        toast.success("Zalogowano pomyślnie", {
-            theme: "dark",
-            position: "top-center",
-            autoClose: 2500,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        return <Redirect to="/myapp"/>;
     }
 
     return (
@@ -71,34 +58,41 @@ const SignIn = ( { history }) => {
                 <Logo/>
             </nav>
             <div className="sign-section wrapper">
-                <BackArrow location={"/"}/>
-                <div className="sign-text">
-                    <h1>Zaloguj się</h1>
-                    <span>Jeżeli nie masz jeszcze konta zarejestruj się</span>
-                </div>
-                <form onSubmit={handleSubmit(handleLogin)}>
-                    <div className="sign-email">
-                        <label htmlFor="email">Adres e-mail</label>
-                        <input {...register("email")} onChange={e => setValue("email", e.target.value)} />
-                        <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
+                <div className="form-box">
+                    <BackArrow location={"/"}/>
+                    <div className="sign-text">
+                        <h1>Zaloguj się</h1>
+                        <span>Jeżeli nie masz jeszcze konta zarejestruj się</span>
                     </div>
-                    <div className="sign-password">
-                        <label htmlFor="password">Hasło</label>
-                        <input type="password" {...register("password")} onChange={e => setValue("password", e.target.value)}/>
-                        <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"password"}/>
-                        {/*Error na dane logowania*/}
-                    </div>
-                    <div className="sign-btn-box">
-                        <button type="submit" className="login-btn">Zaloguj</button>
-                        <Link to="/signup">
-                            <button className="register-btn">Zarejestruj się</button>
-                        </Link>
-                        <div className="resetpass-box">
-                            <p>Nie pamiętasz swojego hasła?</p>
-                            <Link to="/reset-pass">Zresetuj je.</Link>
+                    <form onSubmit={handleSubmit(handleLogin)}>
+                        <div className="sign-email">
+                            <label htmlFor="email">Adres e-mail</label>
+                            <input {...register("email")} onChange={e => setValue("email", e.target.value)}/>
+                            <div className="error-msg-wrapper">
+                                <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                        <div className="sign-password">
+                            <label htmlFor="password">Hasło</label>
+                            <input type="password" {...register("password")}
+                                   onChange={e => setValue("password", e.target.value)}/>
+                            <div className="error-msg-wrapper">
+                                <ErrorMessage as={<div className={"error-message"}/>} errors={errors}
+                                              name={"password"}/>
+                            </div>
+                        </div>
+                        <div className="sign-btn-box">
+                            <button type="submit" className="login-btn">Zaloguj</button>
+                            <Link to="/signup">
+                                <button className="register-btn">Zarejestruj się</button>
+                            </Link>
+                            <div className="resetpass-box">
+                                <p>Nie pamiętasz swojego hasła?</p>
+                                <Link to="/reset-pass">Zresetuj je.</Link>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </>
     );

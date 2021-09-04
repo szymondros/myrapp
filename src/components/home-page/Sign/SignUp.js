@@ -72,54 +72,63 @@ const SignUp = ({history}) => {
                 <Notification/>
             </nav>
             <div className="sign-section wrapper">
-                <BackArrow location={"/signin"}/>
-                <div className="sign-text">
-                    <h1>Zarejestruj się</h1>
-                    <span>Uzyskaj dostęp do niesamowitych funkcjonalaności</span>
-                </div>
-                <form onSubmit={handleSubmit(handleSignUp)}>
-                    <div className="sign-email">
-                        <label htmlFor="email">Adres e-mail</label>
-                        <input name="email" {...register("email")} onChange={e => setValue("email", e.target.value)}/>
-                        <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
+                <div className="form-box">
+                    <BackArrow location={"/signin"}/>
+                    <div className="sign-text">
+                        <h1>Zarejestruj się</h1>
+                        <span>Uzyskaj dostęp do niesamowitych funkcjonalaności</span>
                     </div>
-                    <div className="sign-password">
-                        <div className="label-tooltip-wrapper">
-                            <label htmlFor="password">Hasło</label>
-                            <p
-                                data-place="top"
-                                data-tip='Hasło musi zawierać: <br /><br />
+                    <form onSubmit={handleSubmit(handleSignUp)}>
+                        <div className="sign-email">
+                            <label htmlFor="email">Adres e-mail</label>
+                            <input name="email" {...register("email")}
+                                   onChange={e => setValue("email", e.target.value)}/>
+                            <div className="error-msg-wrapper">
+                                <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
+                            </div>
+                        </div>
+                        <div className="sign-password">
+                            <div className="label-tooltip-wrapper">
+                                <label htmlFor="password">Hasło</label>
+                                <p
+                                    data-place="top"
+                                    data-tip='Hasło musi zawierać: <br /><br />
                                 - minimum 8 znaków <br />
                                 - dużą literę <br />
                                 - małą literę <br />
                                 - znak specjalny'
-                                data-event="click"
-                                multiline="true"
-                            >
-                                <FontAwesomeIcon icon="question-circle"/>
-                            </p>
-                            <ReactTooltip multiline={true} className="target-msg"/>
+                                    data-event="click"
+                                    multiline="true"
+                                >
+                                    <FontAwesomeIcon icon="question-circle"/>
+                                </p>
+                                <ReactTooltip multiline={true} className="target-msg"/>
+                            </div>
+                            <div className="password-eye-wrapper">
+                                <input name="password"
+                                       type={passwordVisible ? 'text' : 'password'} {...register("password")}
+                                       onChange={e => setValue("password", e.target.value)}/>
+                                <FontAwesomeIcon onClick={clickHandler} icon={passwordVisible ? 'eye' : 'eye-slash'}/>
+                            </div>
+                            <div className="error-msg-wrapper">
+                                <ErrorMessage as={<div className={"error-message"}/>} errors={errors}
+                                              name={"password"}/>
+                            </div>
                         </div>
-                        <div className="password-eye-wrapper">
-                            <input name="password"
-                                   type={passwordVisible ? 'text' : 'password'} {...register("password")}
-                                   onChange={e => setValue("password", e.target.value)}/>
-                            <FontAwesomeIcon onClick={clickHandler} icon={passwordVisible ? 'eye' : 'eye-slash'}/>
+                        <div className="sign-password">
+                            <label htmlFor="password">Powtórz hasło</label>
+                            <div className="password-eye-wrapper">
+                                <input type={passwordVisible ? 'text' : 'password'} {...register("repeat")} />
+                            </div>
+                            <div className="error-msg-wrapper">
+                                <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"repeat"}/>
+                            </div>
                         </div>
-                        <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"password"}/>
-                        {/*Error na dane logowania*/}
-                    </div>
-                    <div className="sign-password">
-                        <label htmlFor="password">Powtórz hasło</label>
-                        <div className="password-eye-wrapper">
-                            <input type={passwordVisible ? 'text' : 'password'} {...register("repeat")} />
+                        <div className="sign-btn-box">
+                            <button className="register-btn" type="submit">Zarejestruj się</button>
                         </div>
-                        <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"repeat"}/>
-                    </div>
-                    <div className="sign-btn-box">
-                        <button className="register-btn" type="submit">Zarejestruj się</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </>
     );
