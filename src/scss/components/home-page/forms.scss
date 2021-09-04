@@ -9,8 +9,11 @@
   justify-content: center;
   flex-direction: column;
 
-  .formsection-text {
+  .form-section-text {
     padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   h1 {
@@ -37,6 +40,7 @@
     border-bottom: 1px solid $dark_navy_accent_color;
     border-radius: 5px;
     height: 80px;
+    resize: none;
   }
 
   textarea:focus {
@@ -61,25 +65,21 @@
   .form-name {
     display: flex;
     flex-direction: column;
-    padding-bottom: 20px;
   }
 
   .form-email {
     display: flex;
     flex-direction: column;
-    padding-bottom: 20px;
   }
 
   .form-subject {
     display: flex;
     flex-direction: column;
-    padding-bottom: 20px;
   }
 
   .form-textarea {
     display: flex;
     flex-direction: column;
-    padding-bottom: 25px;
   }
 
 }
@@ -88,4 +88,43 @@
   color: red;
   font-size: 12px;
   padding-top: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  #form {
+    background: $dark_accent_color;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .form-section {
+      background: white;
+      align-items: center;
+      width: 400px;
+      height: 500px;
+      border-radius: 15px;
+      box-shadow: 0 0 8px white;
+
+      form {
+        width: 400px;
+      }
+    }
+  }
+
+}
+
+
+@media screen and (min-width: 1000px) {
+
+  #form {
+    .form-section {
+      width: 600px;
+
+      form {
+        width: 600px;
+      }
+    }
+  }
+
 }

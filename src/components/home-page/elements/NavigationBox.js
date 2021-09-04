@@ -24,21 +24,27 @@ const NavigationBox = () => {
                     <div className={`line ${active ? "opened-hamburger-second" : ""}`}/>
                 </div>
                 <ul className={`nav-links ${active ? "open" : ""}`}>
-                    <li className={`${active ? "fade" : ""}`}>
-                        <Link to={"/#"}
-                           onClick={clickHandler}
-                        >start</Link>
-                    </li>
-                    <li className={`${active ? "fade" : ""}`}>
-                        <Link to="#about"
-                           onClick={clickHandler}
-                        >aplikacja</Link>
-                    </li>
-                    <li className={`${active ? "fade" : ""}`}>
-                        <Link to="/#form"
-                           onClick={clickHandler}
-                        >kontakt</Link>
-                    </li>
+                    <Link to={"/#"}
+                          onClick={clickHandler}
+                    >
+                        <li className={`${active ? "fade" : ""}`}>
+                            start
+                        </li>
+                    </Link>
+                    <Link to="#about"
+                          onClick={clickHandler}
+                    >
+                        <li className={`${active ? "fade" : ""}`}>
+                            aplikacja
+                        </li>
+                    </Link>
+                    <Link to="/#form"
+                          onClick={clickHandler}
+                    >
+                        <li className={`${active ? "fade" : ""}`}>
+                            kontakt
+                        </li>
+                    </Link>
                     <Button text={"Zaloguj się"}/>
                 </ul>
             </nav>

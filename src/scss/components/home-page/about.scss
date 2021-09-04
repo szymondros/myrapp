@@ -8,9 +8,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 40px;
   font-family: $base-font-family;
   color: $dark-accent_color;
+  padding-top: 40px;
+  padding-bottom: 40px;
 
   h1 {
     font-weight: 600;
@@ -84,4 +85,32 @@
 
 #about {
   padding-top: 60px;
+}
+
+@media screen and (min-width: 768px) {
+  .about {
+    padding-top: 40px;
+    padding-bottom: 80px;
+
+    h1 {
+      font-size: 25px;
+    }
+
+    .boxes {
+      display: flex;
+
+      .freestyle-box {
+        padding-right: 30px;
+      }
+
+      .favourite-box {
+        padding-right: 30px;
+      }
+
+      .createrap-box {
+
+      }
+    }
+
+  }
 }
