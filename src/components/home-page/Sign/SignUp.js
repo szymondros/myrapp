@@ -12,7 +12,8 @@ import BackArrow from "../elements/BackArrow";
 import app from "../../../base";
 import {withRouter} from "react-router-dom";
 import Notification from "../../App/elements/Notification";
-import {toast} from "react-toastify";
+import successNotification from "../../../functions/successNotification";
+import errorNotification from "../../../functions/errorNotification";
 
 
 const SignUp = ({history}) => {
@@ -47,26 +48,13 @@ const SignUp = ({history}) => {
                 await app
                     .auth()
                     .createUserWithEmailAndPassword(email, password);
-                successNotification();
+                successNotification("Gratulacje! Zarejestrowałeś się");
                 history.push("/myapp");
             } catch (error) {
-                alert(error);
+                errorNotification(error);
             }
         }, [history]
     );
-
-    const successNotification = () => {
-        toast.success("Gratulacje, konto zarejestrowane!", {
-            theme: "dark",
-            position: "top-center",
-            autoClose: 2500,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
 
     useMemo(() => {
         fontawesome.library.add(faQuestionCircle, faEye, faEyeSlash);
