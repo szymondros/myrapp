@@ -13,6 +13,7 @@ import NavLogo from "./elements/NavLogo";
 import Notification from "./elements/Notification";
 import HelloUser from "./elements/HelloUser";
 import EqualizerBoxes from "./animations/EqualizerBoxes";
+import Logo from "../home-page/elements/Logo";
 
 
 
@@ -64,6 +65,8 @@ const MyApp = () => {
             <NavLogo />
             <Notification/>
             <SecondNavigation />
+            <div className="funny-box">
+            </div>
             <div className="content-box">
                 <video playsInline autoPlay muted loop poster="" id="bgvid">
                     <source src="./video/app-bgvid.mp4" type="video/mp4"/>

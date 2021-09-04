@@ -178,6 +178,10 @@ h1 {
   }
 }
 
+.funny-box {
+  display: none;
+}
+
 .navigation {
   position: fixed;
   bottom: 0;
@@ -235,6 +239,17 @@ h1 {
 
 
 @media screen and (min-width: 768px) {
+  .funny-box {
+    width: 250px;
+    height: 60px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: $dark_accent_color;
+    z-index: -2;
+    display: block;
+  }
+
   .navigation {
     left: 0;
     top: 60px;

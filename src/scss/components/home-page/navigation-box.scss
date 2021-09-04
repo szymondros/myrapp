@@ -23,9 +23,12 @@ nav {
       font-size: 30px;
       font-family: $logo-font-family;
       color: $light_text_color;
+      position: fixed;
+      left: 56px;
     }
     h1:nth-child(1) {
       color: $light_navy_accent_color;
+      left: 40px
     }
   }
 
