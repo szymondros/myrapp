@@ -3,8 +3,7 @@ import {useForm} from "react-hook-form";
 import * as yup from "yup";
 import {ErrorMessage} from '@hookform/error-message';
 import {yupResolver} from "@hookform/resolvers/yup";
-import {toast} from "react-toastify";
-import Notification from "../../App/elements/Notification";
+import successNotification from "../../../functions/successNotification";
 
 const ContactForm = () => {
 
@@ -30,19 +29,7 @@ const ContactForm = () => {
     const onSubmit = (data, e) => {
         console.log(data);
         e.target.reset();
-        successNotification();
-    }
-
-    const successNotification = () => {
-        toast.success('Wiadomość została wysłana', {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        successNotification("Wiadomość została wysłana");
     }
 
     return (

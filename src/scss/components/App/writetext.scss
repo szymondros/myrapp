@@ -19,7 +19,7 @@
     color: $dark_navy_accent_color;
     box-shadow: 0 7px $dark_navy_accent_color;
     border-radius: 15px;
-    margin-top: 5px;
+    margin-top: 20px;
   }
 
   .app-btn:active {
@@ -47,6 +47,7 @@
       align-items: center;
       flex-direction: column;
       padding-top: 30px;
+      width: 100%;
 
       .form-add-beat {
         width: 100%;
@@ -96,11 +97,6 @@
           margin-top: 2px;
         }
 
-        .green-background {
-          border: 3px solid darkgreen;
-          box-sizing: border-box;
-        }
-
         input:focus {
           background: $light_text_color;
           outline-color: $dark_navy_accent_color;
@@ -145,7 +141,7 @@
         border: none;
         border-bottom: 1px solid $dark_navy_accent_color;
         border-radius: 5px;
-        height: 270px;
+        height: 230px;
         width: 100%;
         color: $dark_navy_accent_color;
         background: $textarea_color;

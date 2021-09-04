@@ -1,12 +1,6 @@
 import React, {useMemo, useState} from 'react';
-import Logo from "../home-page/elements/Logo";
-import app from "../../base"
-import PrivateRoute from "../../PrivateRoute";
-import Button from "../home-page/elements/Button";
-import {Link} from "react-router-dom"
 import firebase from "firebase/app"
 import AudioPlayer from "./elements/AudioPlayer";
-import database from "firebase/app";
 import beats from "../../data/beats"
 import subjects from "../../data/subjects";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -17,27 +11,27 @@ import EqualizerLow from "./animations/EqualizerLow";
 import SecondNavigation from "./elements/SecondNavigation";
 import NavLogo from "./elements/NavLogo";
 import Notification from "./elements/Notification";
-import {toast} from "react-toastify";
+import HelloUser from "./elements/HelloUser";
+import EqualizerBoxes from "./animations/EqualizerBoxes";
+
 
 
 const MyApp = () => {
 
-    const user = firebase.auth().currentUser;
-
-    const email = user.email;
-
+//Stan komponentu
     const [currentBeatUrl, setCurrentBeatUrl] = useState("");
     const [currentSubject, setCurrentSubject] = useState("-");
     const [isPlayPause, setPlayPause] = useState(false);
     const [isActive, setActive] = useState(false);
 
-
+//Funkcja losująca
     function getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
+//Handlerki
     const freestyleHandler = () => {
         const urlBeatIndex = getRandomInt(0, beats.length);
         const subjectIndex = getRandomInt(0, subjects.length);
@@ -60,30 +54,19 @@ const MyApp = () => {
         setCurrentSubject(subjects[subjectIndex]);
     }
 
-    const successNotification = () => {
-        toast.success('Jesteś zalogowany.', {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
-
+//Dodawanie ikonek do biblioteki
     useMemo(() => {
         fontawesome.library.add(faPlay, faPause);
     }, []);
 
     return (
         <>
-            <NavLogo/>
+            <NavLogo />
             <Notification/>
-            <SecondNavigation/>
+            <SecondNavigation />
             <div className="content-box">
                 <section className="app-freestyle-section wrapper">
-                    <h1>Witaj {email}</h1>
+                    <HelloUser />
                     <div className="freestyle-box">
                         <button className="app-btn"
                                 onClick={freestyleHandler}>{isActive ? "Nowy zestaw" : "Zacznij Freestyle"}</button>
@@ -108,17 +91,7 @@ const MyApp = () => {
                         </div>
                         <div className={isActive ? "equalizer-box" : "hidden"}>
                             <div className={isPlayPause ? "low-loader-container" : "loader-container"}>
-                                <div className="rectangle-1"></div>
-                                <div className="rectangle-2"></div>
-                                <div className="rectangle-3"></div>
-                                <div className="rectangle-4"></div>
-                                <div className="rectangle-5"></div>
-                                <div className="rectangle-6"></div>
-                                <div className="rectangle-5"></div>
-                                <div className="rectangle-4"></div>
-                                <div className="rectangle-3"></div>
-                                <div className="rectangle-2"></div>
-                                <div className="rectangle-1"></div>
+                                <EqualizerBoxes />
                             </div>
                         </div>
                         <div className={isActive ? "pause-button" : "hidden"}>
@@ -132,14 +105,12 @@ const MyApp = () => {
                                         <FontAwesomeIcon icon="pause"/>
                                     </a>
                             }
-
                         </div>
                     </div>
                 </section>
             </div>
         </>
-    )
-        ;
+    );
 };
 
 export default MyApp;

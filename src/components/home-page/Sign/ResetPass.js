@@ -7,7 +7,8 @@ import Logo from "../elements/Logo";
 import BackArrow from "../elements/BackArrow";
 import Notification from "../../App/elements/Notification";
 import app from "../../../base";
-import {toast} from "react-toastify";
+import successNotification from "../../../functions/successNotification";
+import errorNotification from "../../../functions/errorNotification";
 
 const ResetPass = () => {
 
@@ -30,36 +31,11 @@ const ResetPass = () => {
             await app
                 .auth()
                 .sendPasswordResetEmail(email)
-            successNotification();
+            successNotification("Instrukcje zostały wysłany na adres e-mail");
         } catch (error) {
-            errorNotification();
+            errorNotification("Adres e-mail jest nieprawidłowy");
         }
     };
-
-
-    const successNotification = () => {
-        toast.success('Wysłano wiadomość e-mail z instrukcjami', {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
-
-    const errorNotification = () => {
-        toast.error('Podany adres e-mail nie istnieje w bazie', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
 
     return (
         <>

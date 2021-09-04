@@ -11,7 +11,8 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {Link} from "react-router-dom";
 import firebase from "firebase";
 import Notification from "./Notification";
-import {toast} from "react-toastify";
+import successNotification from "../../../functions/successNotification";
+import errorNotification from "../../../functions/errorNotification";
 
 const MyText = ({selectedText, setSelectedText, onDelete, onUpdate}) => {
 
@@ -23,6 +24,7 @@ const MyText = ({selectedText, setSelectedText, onDelete, onUpdate}) => {
 
     const user = firebase.auth().currentUser;
     const db = firebase.firestore();
+    const soundCloudLink = <Link to="/soundcloud" target="_blank">Soundcloud.com</Link>;
 
     const {handleSubmit, register, formState: {errors}, setValue, getValues} = useForm({
         mode: "onSubmit",
@@ -32,32 +34,6 @@ const MyText = ({selectedText, setSelectedText, onDelete, onUpdate}) => {
     const [isPlayPause, setIsPlayPause] = useState(false);
     const [isActive, setIsActive] = useState(true);
     const [isEditable, setIsEditable] = useState(false);
-
-    const soundCloudLink = <Link to="/soundcloud" target="_blank">Soundcloud.com</Link>;
-
-    const successNotification = () => {
-        toast.success('Zapisano poprawnie.', {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
-
-    const errorNotification = (text) => {
-        toast.error(text, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
 
 
     const pauseHandler = () => {
@@ -87,19 +63,16 @@ const MyText = ({selectedText, setSelectedText, onDelete, onUpdate}) => {
         }
         db.collection(user.uid).doc(textTitle).set(textObj)
             .then(function () {
-                console.log("dane zapisane w bazie");
                 setSelectedText(textObj);
-                successNotification();
+                successNotification("Zapisano");
             })
             .catch(function (error) {
-                console.log("Błąd zapisu danych: ", error);
-                errorNotification();
+                errorNotification(error);
             })
     }
 
     useEffect(() => {
         onUpdate();
-        console.log("Przeładowany");
     }, [])
 
     useMemo(() => {
@@ -121,9 +94,7 @@ const MyText = ({selectedText, setSelectedText, onDelete, onUpdate}) => {
                 </div>
                 <div onClick={editHandler} className="edit-btn">
                     {isEditable ?
-                        <>
-                            <FontAwesomeIcon icon="window-close"/>
-                        </>
+                        <FontAwesomeIcon icon="window-close"/>
                         :
                         <FontAwesomeIcon icon="edit"/>
                     }

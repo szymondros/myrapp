@@ -2,45 +2,37 @@ import React, {useState, useEffect, useMemo} from 'react';
 import NavLogo from "./elements/NavLogo";
 import SecondNavigation from "./elements/SecondNavigation";
 import firebase from "firebase";
-import {Link} from "react-router-dom";
 import MyText from "./elements/MyText";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlay} from "@fortawesome/free-solid-svg-icons";
 import fontawesome from "@fortawesome/fontawesome";
-import * as url from "url";
 import Notification from "./elements/Notification";
-import {toast} from "react-toastify";
+import HelloUser from "./elements/HelloUser";
+import successNotification from "../../functions/successNotification";
 
 const TrackList = () => {
 
+//Stan Komponentu
     const [textList, setTextList] = useState([]);
     const [selectedText, setSelectedText] = useState(false);
 
-
+//Przydatne zmienne
     const db = firebase.firestore();
     const user = firebase.auth().currentUser;
     const content = db.collection(user.uid);
     const email = user.email;
 
-    const successNotification = (text) => {
-        toast.success(text, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+//Handlerki i metody
+    const visibleHandler = (item) => {
+        setSelectedText(item);
     }
 
-    const deleteText = () => {
+    const deleteText = async() => {
         const textTitle = selectedText?.title;
         setTextList((prev) => prev.filter(p => p.title !== textTitle));
         setSelectedText(false);
-        db.collection(user.uid).doc(textTitle).delete();
+        await db.collection(user.uid).doc(textTitle).delete();
         successNotification("Tekst usunięty pomyślnie");
-
     }
 
     const getTextList = async () => {
@@ -49,17 +41,14 @@ const TrackList = () => {
         data.docs.forEach(item => {
             setTextList((prev) => [...prev, item.data()]);
         })
-        console.log(data);
     }
 
-    useEffect(async () => {
+// Aktualizacja listy
+    useEffect(async() => {
         await getTextList();
     }, []);
 
-    const visibleHandler = (item) => {
-        setSelectedText(item);
-    }
-
+// Dodawanie ikon do biblioteki
     useMemo(() => {
         fontawesome.library.add(faPlay);
     }, []);
@@ -70,7 +59,7 @@ const TrackList = () => {
             <NavLogo/>
             <SecondNavigation/>
             <div className={selectedText ? "hidden" : "text-content-box"}>
-                <h1>Witaj {email}</h1>
+                <HelloUser />
                 <p>Twoja lista tekstów</p>
                 <div className="text-list">
                     <ul>
@@ -85,7 +74,7 @@ const TrackList = () => {
                     </ul>
                 </div>
             </div>
-            {selectedText ? <MyText onDelete={deleteText} onUpdate={getTextList} selectedText={selectedText} setSelectedText={setSelectedText}/> : <div></div>}
+            {selectedText ? <MyText onDelete={deleteText} onUpdate={getTextList} selectedText={selectedText} setSelectedText={setSelectedText} /> : <div></div>}
         </>
     );
 };

@@ -27,7 +27,7 @@ const NavigationBox = () => {
                     <li className={`${active ? "fade" : ""}`}>
                         <Link to={"/#"}
                            onClick={clickHandler}
-                        >początek</Link>
+                        >start</Link>
                     </li>
                     <li className={`${active ? "fade" : ""}`}>
                         <Link to="#about"
@@ -39,7 +39,7 @@ const NavigationBox = () => {
                            onClick={clickHandler}
                         >kontakt</Link>
                     </li>
-                    <Button text={"Rozpocznij"}/>
+                    <Button text={"Zaloguj się"}/>
                 </ul>
             </nav>
         </>

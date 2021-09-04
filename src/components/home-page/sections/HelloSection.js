@@ -19,10 +19,10 @@ const HelloSection = () => {
                 <h1>Dzięki tej aplikacji staniesz się</h1>
                 <h1>{active ? "raperem" : "freestylowcem"}</h1>
                 <div className={"icons-wrapper"}>
-                    <img src="./images/freestyler.png" className={active ? "icon-opacity" : ""}/>
-                    <img src={"./images/rapper.png"} className={!active ? "icon-opacity" : ""}/>
+                    <img src="./images/freestyler.png" alt="freestyler" className={active ? "icon-opacity" : ""}/>
+                    <img src={"./images/rapper.png"} alt="rapper" className={!active ? "icon-opacity" : ""}/>
                 </div>
-                <Button text={"Rozpocznij"}/>
+                <Button text={"Zaloguj się"}/>
             </div>
         </section>
     );

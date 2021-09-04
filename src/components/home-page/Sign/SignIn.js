@@ -52,10 +52,11 @@ const SignIn = ( { history }) => {
     }
 
     const successNotification = () => {
-        toast.success('Jesteś zalogowany.', {
+        toast.success("Zalogowano pomyślnie", {
+            theme: "dark",
             position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
+            autoClose: 2500,
+            hideProgressBar: true,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,

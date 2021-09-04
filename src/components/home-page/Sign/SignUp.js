@@ -15,7 +15,7 @@ import Notification from "../../App/elements/Notification";
 import {toast} from "react-toastify";
 
 
-const SignUp = ({ history }) => {
+const SignUp = ({history}) => {
 
     const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -40,25 +40,27 @@ const SignUp = ({ history }) => {
         resolver: yupResolver(validationSchema)
     });
 
-    const handleSignUp = useCallback(async () => {
-        const email = getValues("email");
-        const password = getValues("password");
-        try {
-            await app
-                .auth()
-                .createUserWithEmailAndPassword(email, password);
-            history.push("/myapp");
-            successNotification();
-        } catch (error) {
-            alert(error);
-        }
-    }, [history]);
+    const handleSignUp = useCallback(async event => {
+            const email = getValues("email");
+            const password = getValues("password");
+            try {
+                await app
+                    .auth()
+                    .createUserWithEmailAndPassword(email, password);
+                successNotification();
+                history.push("/myapp");
+            } catch (error) {
+                alert(error);
+            }
+        }, [history]
+    );
 
     const successNotification = () => {
-        toast.success('Konto założone prawidłowo', {
+        toast.success("Gratulacje, konto zarejestrowane!", {
+            theme: "dark",
             position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
+            autoClose: 2500,
+            hideProgressBar: true,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
@@ -90,7 +92,7 @@ const SignUp = ({ history }) => {
                 <form onSubmit={handleSubmit(handleSignUp)}>
                     <div className="sign-email">
                         <label htmlFor="email">Adres e-mail</label>
-                        <input name="email" {...register("email")} onChange={e => setValue("email", e.target.value)} />
+                        <input name="email" {...register("email")} onChange={e => setValue("email", e.target.value)}/>
                         <ErrorMessage as={<div className={"error-message"}/>} errors={errors} name={"email"}/>
                     </div>
                     <div className="sign-password">
