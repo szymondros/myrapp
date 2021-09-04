@@ -9,6 +9,10 @@
   flex-direction: column;
   margin-top: 60px;
 
+  video {
+    display: none;
+  }
+
   h1 {
     font-size: 20px;
     color: $dark_accent_color;
@@ -16,7 +20,7 @@
     text-align: center;
   }
 
-  h1:nth-child(2) {
+  h1:nth-child(3) {
     padding-top: 10px;
     padding-bottom: 40px;
     font-weight: 600;
@@ -50,13 +54,26 @@
 
 @media screen and (min-width: 768px) {
   .hello-section {
+    position: relative;
+    video {
+      display: block;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      z-index: -20;
+      top: 0;
+      left: 0;
+    }
 
     h1 {
       font-size: 34px;
+      color: white;
     }
 
     .icons-wrapper {
       padding-bottom: 80px;
+      justify-content: space-around;
 
       img {
         height: 150px;
@@ -67,6 +84,9 @@
     .box-for-transition {
 
       .btn {
+        background: white;
+        color: $dark_accent_color;
+        border: 3px solid $dark_accent_color;
         padding: 20px 60px;
         font-size: 22px;
       }

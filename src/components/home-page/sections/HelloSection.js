@@ -16,6 +16,9 @@ const HelloSection = () => {
     return (
         <section id="hello-section">
             <div className={"wrapper hello-section"}>
+                <video playsInline autoPlay muted loop poster="" id="bgvid">
+                    <source src="./video/bgvid.mp4" type="video/mp4"/>
+                </video>
                 <h1>Dzięki tej aplikacji staniesz się</h1>
                 <h1>{active ? "raperem" : "freestylowcem"}</h1>
                 <div className={"icons-wrapper"}>
