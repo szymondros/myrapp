@@ -163,7 +163,8 @@ const WriteText = () => {
                                     <FontAwesomeIcon icon="dice-two"/>
                                     <div className="textarea-label-input">
                                         <label>Pisz swój tekst poniżej</label>
-                                        <input placeholder="Tytuł tekstu"
+                                        <input defaultValue="Tytuł tekstu"
+                                               placeholder="Tytuł tekstu"
                                                {...register("title")}
                                         />
                                     </div>
