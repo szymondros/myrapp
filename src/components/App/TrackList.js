@@ -58,6 +58,8 @@ const TrackList = () => {
             <Notification/>
             <NavLogo/>
             <SecondNavigation/>
+            <div className="funny-box">
+            </div>
             <div className={selectedText ? "hidden" : "list-content-box"}>
                 <HelloUser />
                 <p>Twoja lista tekstów</p>

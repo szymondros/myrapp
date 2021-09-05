@@ -96,6 +96,8 @@ const WriteText = () => {
             <Notification/>
             <NavLogo/>
             <SecondNavigation/>
+            <div className="funny-box">
+            </div>
             <div className="content-box">
                 <AudioPlayer
                     url={currentBeatUrl}
